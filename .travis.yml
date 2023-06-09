@@ -17,13 +17,13 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t mikethan/react-test -f ./client/Dockerfile.dev ./client
 
-install: travis_wait 30 mvn install
+
 
 script:
   - docker run mikethan/react-test npm test -- --coverage
 
 deploy:
   provider: script
-  script: bash ./deploy.sh
+  script: travis wait 30 bash ./deploy.sh
   on:
     branch: master
