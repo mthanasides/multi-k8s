@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: endpbm-com-tls
+spec:
+  secretName: endpbm-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: endpbm.com
+  dnsNames:
+      - endpbm.com
+      - www.endpbm.com
